@@ -49,7 +49,7 @@ def main():
     def escreveLinha(x1,y1,x2,y2):
         fr.write("\t\t\t<polyline points=\"%d,%d %d,%d\" />\n" % (x1,y1,x2,y2))
 
-    def escreveCirculo(x, y):
+    def escreveCirculo(x, y,arquivo):
         fr.write("\t\t\t<circle cx=\"%.1f\" cy=\"%.1f\" r=\"0.2\" stroke=\"red\" fill=\"red\" />\n" % (x+0.5,y+0.5))
 
     l = 0
@@ -259,13 +259,9 @@ def main():
         if cg == int(metragem[1]):
             cg = 0
             lg += 1
-        
         j = str(i)
-        if j in novaFila:
-            
-            print('çheguei')
-            exit()
-            escreveCirculo(cg, lg)
+        if j in g.fila:
+            escreveCirculo(cg, lg,fr)
 
         cg += 1
         i += 1
@@ -276,7 +272,7 @@ def main():
     fr.write("</svg>")
     fr.close()
     print('Momento em que o programa parou: '+str(datetime.datetime.now().microsecond))
-    print('Tamanho do caminho '+str(len(g.fila)-2))
+    print('Tamanho do caminho '+str(len(g.fila)))
 
 if __name__ == "__main__":
     main()
